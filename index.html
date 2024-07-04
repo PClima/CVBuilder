@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Sign up - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Inter.css">
+    
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md sticky-top py-3 navbar-dark" id="mainNav">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span><img src="https://res.cloudinary.com/drokum14x/image/upload/v1689856224/portfolio/favicon-32x32_jf9vl6.webp" style="padding-right: 10px;">CV Builder</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav mx-auto"></ul>
+            </div>
+        </div>
+    </nav>
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-4 mb-lg-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <p class="fw-bold text-success mb-2">Bora criar seu CV?</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <form id="cv_form" onsubmit="cv_generator(this)" method="get">
+                        <div id="personal_informations" class="pb-5">
+                            <div id="heading_personal">
+                                <h2 class="text-center">Informações Pessoais</h2>
+                                <hr>
+                            </div>
+                            <div class="d-flex justify-content-xl-center align-items-xl-center" id="personal_line1" style="margin-top: 20px;margin-bottom: 20px;">
+                                <div id="name_div" style="margin-right: 20px;margin-left: 20px;width: 33%;"><span>Nome Completo:</span><input class="form-control" type="text" name="name" id="name" placeholder="Nome " style="background: var(--bs-body-bg);color: var(--bs-body-color);" autocomplete="off" required/></div>
+                                <div id="mail_div" style="margin-right: 20px;margin-left: 20px;width: 40%;"><span>Email:</span><input class="form-control" type="email" name="email" id="email" placeholder="Ex: email@email.com" style="background: var(--bs-body-bg);color: var(--bs-body-color);" autocomplete="off" required/></div>
+                                <div id="phone_div" style="margin-right: 20px;margin-left: 20px;"><span>Telefone:</span><input class="form-control" type="tel" name="phone" id="phone" placeholder="(00) 00000-0000" style="color: var(--bs-body-color);background: var(--bs-body-bg);" maxlength="15" autocomplete="off" required/></div>
+                            </div>
+                            <div class="d-flex justify-content-xl-center align-items-xl-center" id="personal_line2" style="margin-top: 20px;margin-bottom: 20px;">
+                                <div id="district_div" style="margin-right: 20px;margin-left: 20px;width: 40%;"><span>Bairro:</span><input class="form-control" type="text" name="district" placeholder="Ex: Centro" style="background: var(--bs-body-bg);color: var(--bs-body-color);" autocomplete="off" /></div>
+                                <div id="city_div" style="margin-right: 20px;margin-left: 20px;width: 30%;"><span>Cidade:</span><input class="form-control" type="text" name="city" placeholder="Ex: São Paulo" style="background: var(--bs-body-bg);color: var(--bs-body-color);" autocomplete="off" required/></div>
+                                <div id="uf_div" style="margin-right: 20px;margin-left: 20px;width: 30%;"><span>UF:</span><input class="form-control" type="text" name="uf" placeholder="Ex: SP" style="background: var(--bs-body-bg);color: var(--bs-body-color);" autocomplete="off" required/></div>
+                            </div>
+                            <div  class="d-flex justify-content-xl-center align-items-xl-center" id="personal_line2" style="margin-top: 20px;margin-bottom: 20px;">
+                                <div id="linkedin_div" style="margin-right: 20px;margin-left: 20px;width: 40%;"><span>LinkedIn:</span><input class="form-control" type="text" name="linkedin" placeholder="Ex: https://www.linkedin.com/in/user.name/" style="background: var(--bs-body-bg);color: var(--bs-body-color);" autocomplete="off"></div>
+                            </div>
+                        </div>
+                        <div id="educational_informations" class="pb-5">
+                            <div>
+                                <h2 class="text-center">Informações Educacionais</h2>
+                                <hr>
+                            </div>
+                            <div style="padding-bottom: 40px;">
+                                <div id="heading_educational">
+                                    <h4>Formação Acadêmica</h4>
+                                </div>
+                                <div class="d-flex justify-content-xl-center align-items-xl-center pb-5" name="educational_line">
+                                    <div id="course_div" style="padding-right: 20px;padding-left: 20px;width: 40%;"><span>Curso:</span><input class="form-control" type="text" name="course[]" placeholder="Ex: Engenharia da Computação" style="color: var(--bs-body-color);background: var(--bs-body-bg);" onchange="academic_validation()"/></div>
+                                    <div id="institution_div" style="padding-right: 20px;padding-left: 20px;width: 30%;"><span>Instituição:</span><input class="form-control" type="text" name="institution[]" placeholder="Ex: UNASP" style="color: var(--bs-body-color);background: var(--bs-body-bg);" onchange="academic_validation()"/></div>
+                                    <div id="date_course_div" style="padding-right: 20px;padding-left: 20px;width: 30%;"><span>Data de conclusão:</span><input class="form-control" type="month" name="course_conclusion_date[]" style="color: var(--bs-body-color);background: var(--bs-body-bg);" onchange="academic_validation()"/></div>
+                                </div>
+                                <div class="d-xl-flex justify-content-xl-end align-items-xl-center" id="add_educational" style="padding-top: 20px;margin: 0px 20px;"><button class="btn btn-primary d-flex d-xl-flex justify-content-xl-end align-items-xl-center" type="button" id="add_educational_btn" onclick="add_educational_line()">Adicionar +</button></div>
+                            </div>
+                            <div style="padding-bottom: 40px;">
+                                <div id="heading_educational-1">
+                                    <hr>
+                                    <h4>Licenças e Certificados</h4>
+                                </div>
+                                <div class="d-flex justify-content-xl-center align-items-xl-center pb-5" name="certification_line">
+                                    <div id="certification_name_div" style="padding-right: 20px;padding-left: 20px;width: 40%;"><span>Nome:</span><input class="form-control" type="text" name="certification_name[]" placeholder="Ex: AWS Foundational" style="color: var(--bs-body-color);background: var(--bs-body-bg);" onchange="certification_validation()"/></div>
+                                    <div id="certification_organization_div" style="padding-right: 20px;padding-left: 20px;width: 30%;"><span>Organização Emissora:</span><input class="form-control" type="text" name="certification_organization[]" placeholder="Ex: AWS" style="color: var(--bs-body-color);background: var(--bs-body-bg);" onchange="certification_validation()"/></div>
+                                    <div id="certification_emission_div" style="padding-right: 20px;padding-left: 20px;width: 30%;"><span>Data de emissão:</span><input class="form-control" type="month" name="certification_conclusion_date[]" style="color: var(--bs-body-color);background: var(--bs-body-bg);" onchange="certification_validation()"/></div>
+                                </div>
+                                <div class="d-xl-flex justify-content-xl-end align-items-xl-center" id="add_certification" style="padding-top: 20px;margin: 0px 20px;"><button class="btn btn-primary d-flex d-xl-flex justify-content-xl-end align-items-xl-center" type="button" id="add_certification_btn" onclick="add_certification_line()">Adicionar +</button></div>
+                            </div>
+                        </div>
+                        <div id="professional_informations" class="pb-5">
+                            <div id="heading_professional">
+                                <h2 class="text-center">Informações Profissionais</h2>
+                                <hr>
+                            </div>
+                            <div id="skills" style="padding-bottom: 40px;">
+                                <div id="heading_professional-2">
+                                    <h4 class="text-start">Características:</h4>
+                                    <hr>
+                                </div>
+                                <div style="padding-bottom: 20px;"><span>Síntese de conhecimentos:</span><textarea rows="5" class="form-control" name="personal_informations" style="color: var(--bs-body-color);background: var(--bs-body-bg);" placeholder="Ex:&#10;* Facilidade em trabalhos de equipe.&#10;* Expertise em desenvolvimento e liderança como desenvolvedora"></textarea></div>
+                                <div class="d-flex">
+                                    <div id="position_div" style="padding-right: 20px;padding-left: 20px;width: 50%;"><span>Posição de Interesse:</span><input class="form-control" type="text" name="position_desired" placeholder="Ex: Desenvolvedor" style="color: var(--bs-body-color);background: var(--bs-body-bg);"/><span>Tecnologias:</span><input class="form-control" type="text" style="color: var(--bs-body-color);background: var(--bs-body-bg);" name="technologies" placeholder="Ex: Excel | Office" /></div>
+                                    <div style="width: 50%;padding-left: 10%;"><span>Idiomas:</span><div name="languages_div" class="pb-4 d-flex justify-content-between"><input class="form-control" type="text" style="color: var(--bs-body-color);background: var(--bs-body-bg);" name="languages[]" placeholder="Ex: Inglês Avançado" /></div>
+                                        <div class="d-xl-flex justify-content-xl-end align-items-xl-center" id="add_professional-1" style="padding-top: 20px;margin: 0px 20px;"><button class="btn btn-primary d-flex d-xl-flex justify-content-xl-end align-items-xl-center" type="button" id="add_language_btn" onclick="add_language_line()">Adicionar +</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div id="heading_professional-1">
+                                    <h4 class="text-start">Trajetória profissional:</h4>
+                                    <hr>
+                                </div>
+                                <div  name="professional_block1">
+                                    <div class="d-flex justify-content-xl-center align-items-xl-center" id="professional_line1" name="professional_line1">
+                                        <div id="company_div" style="padding-right: 20px;padding-left: 20px;width: 30%;"><span>Empresa:</span><input class="form-control" type="text" name="company[]" placeholder="Ex: IBM" style="color: var(--bs-body-color);background: var(--bs-body-bg);" onchange="professional_validation()"/></div>
+                                        <div id="position_div" style="padding-right: 20px;padding-left: 20px;width: 40%;"><span>Cargo:</span><input class="form-control" type="text" name="position[]" placeholder="Ex: Desenvolvedor" style="color: var(--bs-body-color);background: var(--bs-body-bg);" onchange="professional_validation()"/></div>
+                                        <div id="join_professional_div" style="padding-right: 20px;padding-left: 20px;width: 25%;"><span>Data de entrada:</span><input class="form-control" type="month" name="professional_join_date[]" style="color: var(--bs-body-color);background: var(--bs-body-bg);" onchange="professional_validation()"/></div>
+                                        <div id="exit_professional_div" style="padding-right: 20px;padding-left: 20px;width: 25%;"><span>Data de saída:</span><input class="form-control" type="month" name="professional_end_date[]" style="color: var(--bs-body-color);background: var(--bs-body-bg);" onchange="professional_validation()"/><span style="font-size: 10px;">*Caso emprego atual, deixe o campo em branco</span></div>
+                                    </div>
+                                    <div class="d-flex justify-content-xl-center align-items-xl-center" id="professional_line2" style="padding-top: 20px;margin: 0px 20px;height: auto;">
+                                        <div style="width: 100%;"><span>Atividades Realizadas:</span><textarea class="form-control" style="color: var(--bs-body-color);background: var(--bs-body-bg);height: 150px;" name="work_functions[]" onchange="professional_validation()" placeholder="Ex: Responsável pelo desenvolvimento de aplicação X"></textarea></div>
+                                    </div>
+                                </div>
+                                <div class="d-xl-flex justify-content-xl-end align-items-xl-center" id="add_professional" style="padding-top: 20px;margin: 0px 20px;"><button class="btn btn-primary d-flex d-xl-flex justify-content-xl-end align-items-xl-center" type="button" id="add_professional_btn" onclick="add_professional_line()">Adicionar +</button></div>
+                            </div>
+                            <hr style="padding-top: 10px;padding-bottom: 10px;">
+                            <div class="d-xl-flex justify-content-xl-center align-items-xl-center"><input class="btn btn-lg btn-primary" type="submit" name="submit" value="Gerar CV"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-dark">
+        <div class="container py-4 py-lg-5">
+            <div class="text-muted d-flex justify-content-between align-items-center pt-3">
+                <p class="mb-0">2024 - Pedro Cordeiro Lima</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bold-and-dark.js"></script>
+    <script src="assets/js/builder.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/pdfmake.min.js" integrity="sha512-w61kvDEdEhJPJLSAJpuL+RWp1+zTBUUpgPaP+6pcqCk78wQkOaExjnGWrVbovojeisWGQS7XZKz+gr3L+GPYLg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/vfs_fonts.min.js" integrity="sha512-EFlschXPq/G5zunGPRSYqazR1CMKj0cQc8v6eMrQwybxgIbhsfoO5NAMQX3xFDQIbFlViv53o7Hy+yCWw6iZxA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+
+</html>
